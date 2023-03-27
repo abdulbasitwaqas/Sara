@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_id_my_bids_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_bid_nav"
+        android:title="My Bids" />
+    <item
+        android:id="@+id/nav_id_passbook_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_passbook"
+        android:title="Passbook" />
+    <item
+        android:id="@+id/nav_id_main_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_id_funds_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_balance_24"
+        android:title="Funds" />
+
+    <item
+        android:id="@+id/nav_id_support_fragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_support_agent_24"
+        android:title="Support" />
+
+
+</menu>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="onClickListener"
+            type="com.jsbl.sara.utils.callBacks.OnViewClickListener" />
+
+
+
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:context=".LoginActivity">
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
+
+        android:layout_marginHorizontal="60dp"
+        android:src="@drawable/logo" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Enter Mobile" />
+
+    <EditText
+        android:id="@+id/et_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/grey_round"
+        android:inputType="number"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="11dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Enter Mpin" />
+
+    <EditText
+        android:id="@+id/et_mpin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/grey_round"
+        android:inputType="number"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="11dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Enter OTP" />
+
+    <EditText
+        android:id="@+id/et_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/grey_round"
+        android:inputType="number"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="11dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Invite Code (optional)" />
+
+    <EditText
+        android:id="@+id/et_invitation_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/grey_round"
+        android:inputType="number"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="11dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/yellow"
+        android:paddingVertical="11dp"
+        android:text="Login"
+        android:onClick="@{(view)->onClickListener.onClick(view,0)}"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/forget_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Forgot mpin ?"
+        android:onClick="@{(view)->onClickListener.onClick(view,0)}"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+
+
+</LinearLayout>
+</layout>

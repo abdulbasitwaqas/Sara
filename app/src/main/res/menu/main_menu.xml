@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_outline_account_balance_wallet_24"
+            android:title="wallet"
+            android:visible="true"
+            app:showAsAction="ifRoom" />
+
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_notification"
+            android:title=""
+            android:visible="true"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/nav_refresh"
+            android:icon="@drawable/ic_notification"
+
+            android:title=""
+            android:visible="false"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notification"
+            android:title=""
+            app:showAsAction="always" />
+
+
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="01"
+            android:textColor="@color/black" />
+
+   <!--     <EditText style="@style/jantri_edit_text"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            android:autofillHints="" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

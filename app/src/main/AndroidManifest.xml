@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jsbl.sara">
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <application
+        android:name="com.jsbl.sara.Sara"
+        android:allowBackup="false"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApp"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+
+
+        <activity
+            android:name="com.jsbl.sara.views.activities.DashboardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.jsbl.sara.my_bids.MyBidsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.jsbl.sara.my_bids.BidHistoryActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".views.activities.KingStarlineDashboardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.GamesRatesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.PassbookActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.MpinActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.InviteAndEarnActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.NotificationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.NoticeBoardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".views.activities.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name=".jantra.GameScreen"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+
+        <activity
+            android:name=".funds.FundsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"/>
+
+
+
+
+        <activity
+            android:name=".views.activities.ActivitySplash"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".views.activities.ForgetPasswordActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+
+        <activity
+            android:name=".views.activities.ActLogin"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+
+
+        <activity
+            android:name=".views.activities.SelectGameActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+
+        <receiver
+            android:name="com.jsbl.sara.utils.eventBus.ObjectBus"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ObjectBus" />
+            </intent-filter>
+        </receiver>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/nav_id_main_fragment">
+
+    <fragment
+        android:id="@+id/nav_id_main_fragment"
+        android:name="com.jsbl.sara.views.fragments.DashbaordFragment"
+        android:label="@string/alt_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_nav_id_main_fragment_to_nav_id_game_rates_fragment"
+            app:destination="@id/nav_id_game_rates_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_id_passbook_fragment"
+        android:name="com.jsbl.sara.views.fragments.PassbookFragment"
+        android:label="Passbook"
+        tools:layout="@layout/fragment_passbook">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_id_funds_fragment"
+        android:name="com.jsbl.sara.views.fragments.FundsFragment"
+        android:label="Funds"
+        tools:layout="@layout/fragment_funds">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_id_my_bids_fragment"
+        android:name="com.jsbl.sara.views.fragments.MyBidsFragment"
+        android:label="My Bids"
+        tools:layout="@layout/fragment_my_bids">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_id_support_fragment"
+        android:name="com.jsbl.sara.views.fragments.SupportFragment"
+        android:label="Support"
+        tools:layout="@layout/fragment_support">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_id_game_rates_fragment"
+        android:name="com.jsbl.sara.views.fragments.GamesRateFragment"
+        android:label="Game Rates"
+        tools:layout="@layout/fragment_game_rates">
+    </fragment>
+
+
+    </navigation>
