@@ -35,6 +35,8 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
         get() = job + Dispatchers.Main
     protected lateinit var scopeApiService: ScopeApiServices
 
+
+
     @Inject
     lateinit var localService: LocalService
 
