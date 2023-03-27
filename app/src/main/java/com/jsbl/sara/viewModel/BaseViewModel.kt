@@ -37,6 +37,8 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 
 
 
+
+
     @Inject
     lateinit var localService: LocalService
 
