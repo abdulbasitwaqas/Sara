@@ -28,6 +28,9 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
     }
 
 
+
+
+
       fun loginUser(login: LoginRequest) {
         logD(APP_TAG, "method Called")
         localService.loginUser(login).enqueue(object : Callback<LoginResponse> {
