@@ -15,6 +15,7 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Body
 import java.io.File
 import javax.inject.Inject
 
@@ -98,8 +99,8 @@ class LocalService(val application: Application) {
 
 
 
-     fun loginUser(login: LoginRequest): Call<LoginResponse> {
-        return localApi.loginUser(login)
+     fun loginUser(phone:String, mpin:String, fcm:String): Call<LoginResponse> {
+        return localApi.loginUser(phone, mpin, fcm)
     }
 /*
     fun getDropDown(): Call<SendEncryptionRequest> {

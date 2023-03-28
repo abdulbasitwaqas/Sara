@@ -13,7 +13,6 @@ import com.jsbl.sara.Models.requests.LoginRequest
 import com.jsbl.sara.R
 import com.jsbl.sara.databinding.ActivityLoginBinding
 import com.jsbl.sara.utils.RequestHandler
-import com.jsbl.sara.utils.showShort
 import com.jsbl.sara.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,7 +21,7 @@ class ActLogin  : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginViewMo
 
     private var edittext: String = ""
     private var mpin: String = ""
-    var otp: String = ""
+    var fcm: String = ""
     private var referenceCode:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +37,14 @@ class ActLogin  : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginViewMo
     override fun onClick(view: View, obj: Any) {
         when (view.id) {
             R.id.login -> {
-
                 viewModel.isForgetPass = false
                 edittext = binding.etMobile.text.toString().trim()
                 mpin = binding.etMpin.text.toString().trim()
-                otp = binding.etOtp.text.toString().trim()
+                fcm = binding.etOtp.text.toString().trim()
                 //request
                 if (validateMobileNo() && validateMPin() && validateOTP()) {
-                    val loginVal = LoginRequest(edittext, mpin, otp)
-                    viewModel.loginUser(loginVal)
+                    val loginVal = LoginRequest(edittext, mpin, fcm)
+                    viewModel.loginUser(edittext, mpin, fcm)
                 }
             }
             R.id.forget_password -> {
@@ -123,7 +121,7 @@ class ActLogin  : BaseActivity<LoginViewModel, ActivityLoginBinding>(LoginViewMo
 
 
     private fun validateOTP(): Boolean {
-        return if (otp.isNotEmpty()) {
+        return if (fcm.isNotEmpty()) {
             binding.etOtp.error = null
             true
         } else {

@@ -31,9 +31,9 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
 
 
-      fun loginUser(login: LoginRequest) {
+      fun loginUser(phone:String, mpin:String, fcm:String) {
         logD(APP_TAG, "method Called")
-        localService.loginUser(login).enqueue(object : Callback<LoginResponse> {
+        localService.loginUser(phone, mpin, fcm).enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 setError(call, "Internet Connectivity issue")
             }

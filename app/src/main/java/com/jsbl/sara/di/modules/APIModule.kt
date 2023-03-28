@@ -5,16 +5,12 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jsbl.sara.BuildConfig
-import com.jsbl.sara.R
 import com.jsbl.sara.network.LocalApi
 import com.jsbl.sara.network.LocalService
-import com.jsbl.sara.utils.APP_TAG
 import com.jsbl.sara.utils.SharePreferencesHelper
-import com.jsbl.sara.utils.logD
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -22,12 +18,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.KeyStore
-import java.security.cert.Certificate
-import java.security.cert.CertificateFactory
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManagerFactory
-import javax.net.ssl.X509TrustManager
 
 
 @Module
@@ -41,15 +32,12 @@ class APIModule {
 
     @Provides
     fun provideNetworkApi(client: OkHttpClient): LocalApi {
-        val contentType = "application/json".toMediaType()
         val gson: Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(LocalApi::class.java)
     }
@@ -60,15 +48,8 @@ class APIModule {
         return LocalService(application)
     }
 
-    /**
-     * Generates an OkHttpClient with our trusted CAs
-     * to make calls to a service which requires it.
-     *
-     * @param context the context to access our file.
-     * @return OkHttpClient with our trusted CAs added.
-     */
+
     private fun generateSecureOkHttpClient(application: Context): OkHttpClient {
-        // Create a simple builder for our http client, this is only por example purposes
 
         var preferencesHelper: SharePreferencesHelper = SharePreferencesHelper(application)
         val logger = HttpLoggingInterceptor()
@@ -93,8 +74,6 @@ class APIModule {
 //                        .header("USER",preferencesHelper.encryptUserId(preferencesHelper.getCustomerId().toString()))
                         .method(original.method, original.body)
                         .build()
-
-                    logD(APP_TAG,"API MOdule Bearer :" +preferencesHelper.getAuth())
 //                    logD("**encryptedUserID","encrpted user ID :" +preferencesHelper.encryptUserId(preferencesHelper.getCustomerId().toString()))
                     return chain.proceed(request)
                 }
@@ -102,43 +81,14 @@ class APIModule {
             .build()
         return httpClientBuilder
     }
-    private fun getUnsafeOkHttpClient(mContext: Context) :
+
+    private fun getUnsafeOkHttpClient(mContext: Context):
             OkHttpClient.Builder {
-
-
-        var mCertificateFactory : CertificateFactory =
-            CertificateFactory.getInstance("X.509")
-        var mInputStream = mContext.resources.openRawResource(R.raw.uat_aigenix_ai)
-        var mCertificate : Certificate = mCertificateFactory.generateCertificate(mInputStream)
-        mInputStream.close()
         val mKeyStoreType = KeyStore.getDefaultType()
         val mKeyStore = KeyStore.getInstance(mKeyStoreType)
         mKeyStore.load(null, null)
-        mKeyStore.setCertificateEntry("ca", mCertificate)
-
-        val mTmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm()
-        val mTrustManagerFactory = TrustManagerFactory.getInstance(mTmfAlgorithm)
-        mTrustManagerFactory.init(mKeyStore)
-
-        val mTrustManagers = mTrustManagerFactory.trustManagers
-
-        val mSslContext = SSLContext.getInstance("SSL")
-        mSslContext.init(null, mTrustManagers, null)
-        val mSslSocketFactory = mSslContext.socketFactory
-
         val builder = OkHttpClient.Builder()
-        builder.sslSocketFactory(mSslSocketFactory, mTrustManagers[0] as X509TrustManager)
         builder.hostnameVerifier { _, _ -> true }
         return builder
     }
 }
-
-/*
-
-const val API_SERVIE_LOCAL = "local_service"
-const val API_SERVICE_SCOPE = "scope_service"
-const val API_SERVICE_GOOGLE = "google_service"
-
-
-@Qualifier
-annotation class typeOfService(val type: String)*/
