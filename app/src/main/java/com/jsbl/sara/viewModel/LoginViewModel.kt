@@ -42,9 +42,10 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
                 call: Call<LoginResponse>,
                 response: Response<LoginResponse>
             ) {
-                if (response.code() == 200) {
+                if (response.code() == 8990) {
                     try {
                         val response: LoginResponse? = response.body()
+                        setSuccess(response)
 
                     } catch (e: Exception) {
                         setError(response, null)
